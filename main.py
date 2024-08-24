@@ -1,4 +1,4 @@
-from inventario import Inventario
+from gestion_inventario2 import Inventario
 
 inventario_articulo = Inventario()
 
@@ -26,19 +26,23 @@ while True:
         inventario_articulo.mostrar()
     
     if opcion in ["3","4","5"]:
-        nombre = input("Ingrese el nombre")
+        id = input("Ingrese el id")
         if opcion == "3":
-            producto = inventario_articulo.buscar(nombre)
-            if producto:
-                print(f"Nombre, {producto.nombre}, Precio, {producto.precio}, Unidad, {producto.unidad}")
-
+            tabla_resultado = inventario_articulo.buscar(id)
+            if tabla_resultado:
+                print("ID   Nombre  Precio  Cantidad")
+                print(f"{tabla_resultado[0]}    {tabla_resultado[1]}    {tabla_resultado[2]}    {tabla_resultado[3]}")
+                
+            else:
+                print("Producto no encontrado")
+            
         elif opcion == "4":
             nuevo_nombre = input("Ingrese nuevo nombre")
             nuevo_precio = float(input("Ingrese nuevo precio"))
             nueva_unidad = int(input("Ingrese nuevas unidades"))
         
         elif opcion == "5":
-            inventario_articulo.eliminar(nombre)
+            inventario_articulo.eliminar(id)
 
         
             
